@@ -2,7 +2,7 @@ name: chat_message
 description: A new flutter plugin project.
 version: 0.0.1
 author:
-homepage:
+homepage: https://google.com
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -11,6 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_keyboard_visibility: ^4.0.2
 
 dev_dependencies:
   flutter_test:
@@ -34,8 +35,11 @@ flutter:
         pluginClass: ChatMessagePlugin
 
   # To add assets to your plugin package, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - lib/assets/image/
+    - lib/assets/image/2x/
+    - lib/assets/image/3x/
+    - lib/resources/
   #   - images/a_dot_ham.jpeg
   #
   # For details regarding assets in packages, see
