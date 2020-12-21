@@ -7,7 +7,6 @@ import 'package:chat_message_example/utils/assets/assets.dart';
 
 class ChatMessageExample extends StatefulWidget {
   static const String router = "chat_control";
-
   const ChatMessageExample({Key key}) : super(key: key);
 
   @override
@@ -93,7 +92,7 @@ class _ChatMessageExampleState extends BaseState<ChatMessageExample>
         chatFooter: _buildFooter(),
         builder: (context, index, anim) {
           return KChatItem(
-              key: ValueKey(items[index].message.text),
+              key: ValueKey<BaseItemChat>(items[index]),
               location: items[index].location,
               heightTopView: 20,
               heightBottomView: 20,
@@ -116,6 +115,11 @@ class _ChatMessageExampleState extends BaseState<ChatMessageExample>
   }
 
   Widget _buildItemText(int index) {
+    // if (index % 3 == 0) {
+    //   return KAudio(
+    //     backgroundColor: Colors.red,
+    //   );
+    // }
     return KChatItemText(
       items[index].message.text,
       matchText: _matchText,
