@@ -1,10 +1,10 @@
-import 'package:base_widget/src/ui/button/button_state.dart';
 import 'package:flutter/material.dart';
+import 'package:base_widget/src/ui/button/button_state.dart';
 
 class DeleteButton extends StatefulWidget {
-  final IconData icon;
   final String text;
   final double width;
+  final IconData icon;
   final double height;
   final TextStyle style;
   final ButtonState state;
