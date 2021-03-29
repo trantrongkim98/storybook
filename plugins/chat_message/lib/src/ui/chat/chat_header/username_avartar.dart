@@ -2,24 +2,25 @@ import 'package:chat_message/src/ui/widgets/zero_widget.dart';
 import 'package:flutter/material.dart';
 
 class KUsernameAvatar extends StatelessWidget {
-  final String url;
+  final String? url;
   final String title;
   final String status;
-  final EdgeInsets margin;
-  final EdgeInsets padding;
-  final TextStyle statusStyle;
-  final TextStyle usernameStyle;
+  final EdgeInsets? margin;
+  final EdgeInsets? padding;
+  final TextStyle? statusStyle;
+  final TextStyle? usernameStyle;
 
   const KUsernameAvatar({
-    Key key,
+    Key? key,
     this.margin,
     this.padding,
     this.title = "",
     this.status = "",
     this.statusStyle,
     this.usernameStyle,
-    @required this.url,
-  }) : super(key: key);
+    this.url,
+  })  : assert(url != null),
+        super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -39,7 +40,7 @@ class KUsernameAvatar extends StatelessWidget {
         child: ClipRRect(
       borderRadius: BorderRadius.circular(21),
       child: Image.network(
-        this.url,
+        this.url!,
         width: 42,
         height: 42,
       ),

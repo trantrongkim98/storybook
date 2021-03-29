@@ -5,6 +5,9 @@ import 'package:chat_message/src/ui/base/base_state.dart';
 import 'package:chat_message/src/ui/widgets/zero_widget.dart';
 import 'package:chat_message/src/ui/base/chat/base_chat_footer.dart';
 import 'package:chat_message/src/ui/chat/chat_footer/chat_footer_import.dart';
+import 'package:flutter/rendering.dart';
+
+import '../../base/chat/base_chat_footer.dart';
 
 enum KEnumFooterItem {
   MIC,
@@ -14,25 +17,25 @@ enum KEnumFooterItem {
 }
 
 class ChatFooter extends BaseChatFooter {
-  final Widget mic;
-  final double width;
-  final String iconMic;
-  final Widget sticker;
-  final String hintText;
-  final TextStyle style;
-  final String iconSend;
-  final String iconPlus;
-  final String iconEmoji;
-  final EdgeInsets margin;
-  final String iconSticker;
-  final EdgeInsets padding;
-  final TextInput textInput;
-  final Function(String) onTextChanged;
-  final Function(KMessage) onMessageChanged;
-  final Function(KEnumFooterItem) onItemChanged;
+  final Widget? mic;
+  final double? width;
+  final String? iconMic;
+  final Widget? sticker;
+  final String? hintText;
+  final TextStyle? style;
+  final String? iconSend;
+  final String? iconPlus;
+  final String? iconEmoji;
+  final EdgeInsets? margin;
+  final String? iconSticker;
+  final EdgeInsets? padding;
+  final TextInput? textInput;
+  final OnTextChangedCallback? onTextChanged;
+  final OnMessageChangedCallback? onMessageChanged;
+  final Function(KEnumFooterItem)? onItemChanged;
 
   const ChatFooter({
-    Key key,
+    Key? key,
     this.mic,
     this.style,
     this.width,
@@ -69,7 +72,7 @@ class _ChatFooterState extends BaseState<ChatFooter> {
   void initState() {
     super.initState();
     if (widget.margin != null) {
-      _heightPaddingTopBottom = widget.margin.bottom;
+      _heightPaddingTopBottom = widget.margin!.bottom;
     }
     height += _heightPaddingTopBottom;
   }
@@ -112,10 +115,10 @@ class _ChatFooterState extends BaseState<ChatFooter> {
         iconCirclePlus: widget.iconPlus,
         padding: EdgeInsets.symmetric(horizontal: 10.65),
         onTextChanged: (text) async {
-          widget.onTextChanged(text);
+          widget.onTextChanged!(text);
           await Future.delayed(Duration(milliseconds: 50));
-          setState(() => height =
-              _kTextInput.currentContext.size.height + _heightPaddingTopBottom);
+          setState(() => height = _kTextInput.currentContext!.size!.height +
+              _heightPaddingTopBottom);
         },
       ),
     );
@@ -137,7 +140,7 @@ class _ChatFooterState extends BaseState<ChatFooter> {
   }
 
   Widget _buildIconSticker() {
-    if (widget.iconSticker == null || widget.iconSticker.isEmpty) {
+    if (widget.iconSticker == null || widget.iconSticker!.isEmpty) {
       return ZeroWidget();
     }
 
@@ -145,7 +148,7 @@ class _ChatFooterState extends BaseState<ChatFooter> {
       width: 65,
       child: Image(
         image: AssetImage(
-          widget.iconSticker,
+          widget.iconSticker!,
         ),
         width: 26,
         height: 26,
@@ -154,7 +157,7 @@ class _ChatFooterState extends BaseState<ChatFooter> {
   }
 
   Widget _buildIconMicro() {
-    if (widget.iconMic == null || widget.iconMic.isEmpty) {
+    if (widget.iconMic == null || widget.iconMic!.isEmpty) {
       return ZeroWidget();
     }
 
@@ -163,30 +166,30 @@ class _ChatFooterState extends BaseState<ChatFooter> {
       alignment: Alignment.bottomCenter,
       child: Image(
         image: AssetImage(
-          widget.iconMic,
+          widget.iconMic!,
         ),
       ),
     );
   }
 
   Widget _buildIconLikeAndSend() {
-    if (widget.iconSend == null || widget.iconSend.isEmpty) {
+    if (widget.iconSend == null || widget.iconSend!.isEmpty) {
       return ZeroWidget();
     }
     return GestureDetector(
       onTap: () {
         final message = KMessage.text(
-          text: _kTextInput.currentState.text,
+          text: _kTextInput.currentState!.text,
         );
         if (message.text.isEmpty) return;
-        widget.onMessageChanged(message);
-        _kTextInput.currentState.resetTextField();
+        widget.onMessageChanged!(message);
+        _kTextInput.currentState!.resetTextField();
       },
       child: Container(
         width: 51,
         child: Image(
           image: AssetImage(
-            widget.iconSend,
+            widget.iconSend!,
           ),
         ),
       ),

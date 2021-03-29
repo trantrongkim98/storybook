@@ -10,22 +10,22 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 enum FloatingActionLocation { TOPLEFT, TOPRIGHT, BOTTOMLEFT, BOTTOMRIGHT }
 
 class KChatContent extends StatefulWidget {
-  final Widget typing;
-  final Widget refreshItem;
-  final EdgeInsets padding;
+  final Widget? typing;
+  final Widget? refreshItem;
+  final EdgeInsets? padding;
   final List<BaseItemChat> items;
-  final Widget buttonMoveToBegin;
-  final Future Function() onRefresh;
-  final AnimatedListItemBuilder builder;
-  final FloatingActionLocation floatingActionLocation;
+  final Widget? buttonMoveToBegin;
+  final Future Function()? onRefresh;
+  final IndexedWidgetBuilder? builder;
+  final FloatingActionLocation? floatingActionLocation;
 
   const KChatContent({
-    Key key,
+    Key? key,
     this.typing,
     this.padding,
     this.onRefresh,
     this.refreshItem,
-    @required this.items,
+    this.items = const [],
     this.buttonMoveToBegin,
     @required this.builder,
     this.floatingActionLocation = FloatingActionLocation.BOTTOMRIGHT,
@@ -113,7 +113,7 @@ class KChatContentState extends BaseState<KChatContent> {
               Duration(milliseconds: 500), () => _stateTransitionRefresh(null));
         } else {
           _lockCallApi = true;
-          widget.onRefresh().then(_stateTransitionRefresh);
+          widget.onRefresh!().then(_stateTransitionRefresh);
         }
       }
     } else {
@@ -217,7 +217,7 @@ class KChatContentState extends BaseState<KChatContent> {
             }
             return _buildTypeStatus();
           }
-          return widget.builder(context, index - 1, null);
+          return widget.builder!(context, index - 1);
         },
       ),
     );

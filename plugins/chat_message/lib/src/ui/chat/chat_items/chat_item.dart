@@ -16,40 +16,34 @@ extension _GetIcon on ItemStatus {
     switch (this) {
       case ItemStatus.SEEN:
         return "seen";
-        break;
       case ItemStatus.FAILED:
         return "";
-        break;
       case ItemStatus.AVATAR:
         return "avatar";
-        break;
       case ItemStatus.READED:
         return "";
-        break;
       case ItemStatus.UNREAD:
         return "";
-        break;
       default:
         return "";
-        break;
     }
   }
 }
 
 class KChatItem extends StatefulWidget {
   final bool isTap;
-  final Widget avatar;
-  final Widget topView;
-  final Function onTap;
-  final Widget bottomView;
-  final Widget itemBuilder;
-  final double heightTopView;
-  final ItemStatus itemStatus;
-  final EChatLocation location;
-  final double heightBottomView;
+  final Widget? avatar;
+  final Widget? topView;
+  final Function()? onTap;
+  final Widget? bottomView;
+  final Widget? itemBuilder;
+  final double? heightTopView;
+  final ItemStatus? itemStatus;
+  final EChatLocation? location;
+  final double? heightBottomView;
 
   const KChatItem({
-    Key key,
+    Key? key,
     this.onTap,
     this.avatar,
     this.topView,
@@ -69,7 +63,7 @@ class KChatItem extends StatefulWidget {
 
 class KChatItemState extends BaseState<KChatItem>
     with TickerProviderStateMixin {
-  bool _isOpenInfo;
+  bool _isOpenInfo = false;
   @override
   void initState() {
     super.initState();
@@ -116,15 +110,13 @@ class KChatItemState extends BaseState<KChatItem>
     switch (widget.location) {
       case EChatLocation.LEFT:
         return MainAxisAlignment.start;
-        break;
       case EChatLocation.RIGHT:
         return MainAxisAlignment.end;
-        break;
       case EChatLocation.CENTER:
         return MainAxisAlignment.center;
-        break;
+      default:
+        return MainAxisAlignment.end;
     }
-    return MainAxisAlignment.end;
   }
 
   Widget _buildContent() {
@@ -143,7 +135,7 @@ class KChatItemState extends BaseState<KChatItem>
   }
 
   Widget _buildStatus() {
-    if (widget.itemStatus.icon.isEmpty ||
+    if (widget.itemStatus!.icon.isEmpty ||
         widget.itemStatus == ItemStatus.SEEN) {
       return ZeroWidget(
         width: 20,
@@ -158,7 +150,7 @@ class KChatItemState extends BaseState<KChatItem>
 
     return Container(
       child: Image(
-        image: AssetImage(widget.itemStatus.icon),
+        image: AssetImage(widget.itemStatus!.icon),
       ),
     );
   }

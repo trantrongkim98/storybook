@@ -3,11 +3,11 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 
 class KMessage {
-  final KMessageType type;
+  final KMessageType? type;
   final String text;
   final String sticker;
   final String urlVideo;
-  final _ImageKMessage image;
+  final _ImageKMessage? image;
 
   KMessage({
     this.type,
@@ -18,7 +18,7 @@ class KMessage {
   });
 
   factory KMessage.text({
-    String text,
+    String? text,
   }) {
     return KMessage(
       text: text ?? "",
@@ -27,14 +27,15 @@ class KMessage {
   }
 
   factory KMessage.image({
-    double width,
-    double height,
-    @required Uint8List image,
+    double? width,
+    double? height,
+    @required Uint8List? image,
   }) {
+    assert(image != null);
     return KMessage(
         type: KMessageType.IMAGE,
         image: _ImageKMessage(
-          image: image,
+          image: image!,
           width: width ?? 0,
           height: height ?? 0,
         ));
@@ -42,9 +43,9 @@ class KMessage {
 }
 
 class _ImageKMessage {
-  final double width;
-  final double height;
-  final Uint8List image;
+  final double? width;
+  final double? height;
+  final Uint8List? image;
 
   _ImageKMessage({
     this.image,

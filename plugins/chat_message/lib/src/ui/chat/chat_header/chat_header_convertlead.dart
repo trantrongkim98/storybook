@@ -4,11 +4,11 @@ import 'package:chat_message/src/ui/widgets/zero_widget.dart';
 import 'package:chat_message/src/ui/chat/chat_header/widgets/chat_header_icon.dart';
 
 class KChatHeaderConvertlead extends BaseChatHeader {
-  final Widget avatar;
-  final KChatHeaderIcon voiceCall;
-  final KChatHeaderIcon videoCall;
-  final KChatHeaderIcon buttonBack;
-  final KChatHeaderIcon buttonMore;
+  final Widget? avatar;
+  final KChatHeaderIcon? voiceCall;
+  final KChatHeaderIcon? videoCall;
+  final KChatHeaderIcon? buttonBack;
+  final KChatHeaderIcon? buttonMore;
 
   KChatHeaderConvertlead({
     this.avatar,
@@ -52,14 +52,14 @@ class _KChatHeaderConvertleadState extends BaseState<KChatHeaderConvertlead> {
     if (widget.buttonBack == null) {
       return ZeroWidget();
     }
-    return widget.buttonBack;
+    return widget.buttonBack!;
   }
 
   Widget _buildAvatar() {
     if (widget.avatar == null) {
       return ZeroWidget();
     }
-    return widget.avatar;
+    return widget.avatar!;
   }
 
   Widget _buildIconMore() {
@@ -67,14 +67,14 @@ class _KChatHeaderConvertleadState extends BaseState<KChatHeaderConvertlead> {
       return ZeroWidget();
     }
 
-    return widget.buttonMore;
+    return widget.buttonMore!;
   }
 
   Widget _buildIconVoiceCall() {
     if (widget.voiceCall == null) {
       return ZeroWidget();
     }
-    return widget.voiceCall;
+    return widget.voiceCall!;
   }
 
   Widget _buildIconVideoCall() {
@@ -82,6 +82,6 @@ class _KChatHeaderConvertleadState extends BaseState<KChatHeaderConvertlead> {
       return ZeroWidget();
     }
 
-    return widget.videoCall;
+    return widget.videoCall!;
   }
 }

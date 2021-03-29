@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 class PlayPauseButton extends StatefulWidget {
-  final double width;
-  final double height;
-  final String iconPlay;
-  final String iconPause;
-  final EdgeInsets margin;
-  final EdgeInsets padding;
-  final Function(bool) onStateChanged;
+  final double? width;
+  final double? height;
+  final String? iconPlay;
+  final String? iconPause;
+  final EdgeInsets? margin;
+  final EdgeInsets? padding;
+  final Function(bool)? onStateChanged;
 
   const PlayPauseButton({
-    Key key,
+    Key? key,
     this.width,
     this.height,
     this.margin,

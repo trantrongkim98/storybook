@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class KSticker extends StatefulWidget {
   final List<dynamic> items;
 
-  const KSticker({Key key, @required this.items}) : super(key: key);
+  const KSticker({Key? key, this.items = const []}) : super(key: key);
 
   @override
   _KStickerState createState() => _KStickerState();
