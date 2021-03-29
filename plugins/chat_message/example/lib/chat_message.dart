@@ -2,12 +2,13 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:chat_message/chat_message.dart';
-import 'package:chat_message_example/utils/fonts/font.dart';
-import 'package:chat_message_example/utils/assets/assets.dart';
+
+import 'utils/assets/assets.dart';
+import 'utils/fonts/font.dart';
 
 class ChatMessageExample extends StatefulWidget {
   static const String router = "chat_control";
-  const ChatMessageExample({Key key}) : super(key: key);
+  const ChatMessageExample({Key? key}) : super(key: key);
 
   @override
   _ChatMessageExampleState createState() => _ChatMessageExampleState();
@@ -16,11 +17,11 @@ class ChatMessageExample extends StatefulWidget {
 class _ChatMessageExampleState extends BaseState<ChatMessageExample>
     with WidgetsBindingObserver {
   String _matchText = "";
-  List<BaseItemChat> items;
+  List<BaseItemChat> items = [];
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance?.addObserver(this);
     items = getDataTest(50);
   }
 
@@ -47,7 +48,7 @@ class _ChatMessageExampleState extends BaseState<ChatMessageExample>
 
   @override
   void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
+    WidgetsBinding.instance?.removeObserver(this);
     super.dispose();
   }
 
@@ -90,7 +91,7 @@ class _ChatMessageExampleState extends BaseState<ChatMessageExample>
         },
         chatHeader: _chatHeaderConvertLead(),
         chatFooter: _buildFooter(),
-        builder: (context, index, anim) {
+        builder: (context, index) {
           return KChatItem(
               key: ValueKey<BaseItemChat>(items[index]),
               location: items[index].location,
@@ -121,7 +122,7 @@ class _ChatMessageExampleState extends BaseState<ChatMessageExample>
     //   );
     // }
     return KChatItemText(
-      items[index].message.text,
+      items[index].message?.text ?? "",
       matchText: _matchText,
       backgroundColor: Colors.blue,
       borderRadius: BorderRadius.circular(16),
@@ -183,7 +184,7 @@ class _ChatMessageExampleState extends BaseState<ChatMessageExample>
     );
   }
 
-  Widget _chatHeaderConvertLead() {
+  BaseChatHeader? _chatHeaderConvertLead() {
     return KChatHeaderConvertlead(
       voiceCall: KChatHeaderIcon(
         width: 40,
@@ -227,7 +228,7 @@ class _ChatMessageExampleState extends BaseState<ChatMessageExample>
     );
   }
 
-  Widget _buildFooter() {
+  BaseChatFooter _buildFooter() {
     return ChatFooter(
       iconSend: AppAsset.icLikeEnable,
       iconMic: AppAsset.icMicroDisable,

@@ -4,7 +4,7 @@ class KCircleAvatarStatus extends StatelessWidget {
   final String url;
 
   const KCircleAvatarStatus({
-    Key key,
+    Key? key,
     this.url =
         "https://image.shutterstock.com/image-photo/white-transparent-leaf-on-mirror-600w-1029171697.jpg",
   })  : assert(url != ""),

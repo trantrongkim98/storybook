@@ -5,24 +5,24 @@ import 'package:chat_message/src/ui/widgets/zero_widget.dart';
 
 class KChatMessage extends StatefulWidget {
   static const String router = "chat_control";
-  final Widget typing;
-  final String matchText;
+  final Widget? typing;
+  final String? matchText;
   final bool isShowTyping;
-  final EdgeInsets padding;
-  final Widget refreshItem;
-  final BorderRadius chatRadius;
-  final Widget buttonMoveToBegin;
+  final EdgeInsets? padding;
+  final Widget? refreshItem;
+  final BorderRadius? chatRadius;
+  final Widget? buttonMoveToBegin;
   final List<BaseItemChat> items;
-  final Color chatBackgroundColor;
-  final BaseChatHeader chatHeader;
-  final BaseChatFooter chatFooter;
-  final Future Function() onRefresh;
-  final AnimatedListItemBuilder builder;
-  final FloatingActionLocation floatingActionLocation;
+  final Color? chatBackgroundColor;
+  final BaseChatHeader? chatHeader;
+  final BaseChatFooter? chatFooter;
+  final Future Function()? onRefresh;
+  final IndexedWidgetBuilder? builder;
+  final FloatingActionLocation? floatingActionLocation;
 
   const KChatMessage({
-    Key key,
-    this.items,
+    Key? key,
+    this.items = const [],
     this.typing,
     this.padding,
     this.matchText,
@@ -31,13 +31,12 @@ class KChatMessage extends StatefulWidget {
     this.chatFooter,
     this.refreshItem,
     this.buttonMoveToBegin,
-    @required this.builder,
+    this.builder,
     this.isShowTyping = false,
     this.floatingActionLocation,
     this.chatRadius = BorderRadius.zero,
     this.chatBackgroundColor = AppColor.transparent,
-  })  : assert(builder != null),
-        super(key: key);
+  }) : super(key: key);
 
   static _KChatMessageState of(BuildContext context) {
     final result = context.findAncestorStateOfType<_KChatMessageState>();
@@ -57,17 +56,17 @@ class _KChatMessageState extends BaseState<KChatMessage>
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance?.addObserver(this);
   }
 
   @override
   void didUpdateWidget(covariant KChatMessage oldWidget) {
     if (widget.isShowTyping != oldWidget.isShowTyping) {
       if (widget.isShowTyping ||
-          !_kChatContentState.currentState.isShowTyping) {
-        _kChatContentState.currentState.showTyping();
+          !_kChatContentState.currentState!.isShowTyping) {
+        _kChatContentState.currentState!.showTyping();
       } else {
-        _kChatContentState.currentState.hideTyping();
+        _kChatContentState.currentState!.hideTyping();
       }
     }
     super.didUpdateWidget(oldWidget);
@@ -75,7 +74,7 @@ class _KChatMessageState extends BaseState<KChatMessage>
 
   @override
   void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
+    WidgetsBinding.instance?.removeObserver(this);
     super.dispose();
   }
 
@@ -106,7 +105,7 @@ class _KChatMessageState extends BaseState<KChatMessage>
     if (widget.chatHeader == null) {
       return ZeroWidget();
     }
-    return widget.chatHeader;
+    return widget.chatHeader!;
   }
 
   Widget _buildChat() {
@@ -134,6 +133,6 @@ class _KChatMessageState extends BaseState<KChatMessage>
       return ZeroWidget();
     }
 
-    return widget.chatFooter;
+    return widget.chatFooter!;
   }
 }

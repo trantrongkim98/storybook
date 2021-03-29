@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 class KAudio extends StatefulWidget {
-  final EdgeInsets padding;
-  final Color backgroundColor;
-  final PlayPauseButton playPauseButton;
+  final EdgeInsets? padding;
+  final Color? backgroundColor;
+  final PlayPauseButton? playPauseButton;
   const KAudio({
-    Key key,
+    Key? key,
     this.padding,
     this.backgroundColor,
     this.playPauseButton,

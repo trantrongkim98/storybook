@@ -3,8 +3,8 @@ import 'package:chat_message/src/model/chat/message.dart';
 
 class BaseItemChat {
   bool isTap;
-  KMessage message;
-  EChatLocation location;
+  KMessage? message;
+  EChatLocation? location;
 
   BaseItemChat({
     this.message,
@@ -13,9 +13,9 @@ class BaseItemChat {
   });
 
   BaseItemChat copyWith({
-    bool isTap,
-    KMessage data,
-    EChatLocation location,
+    bool? isTap,
+    KMessage? data,
+    EChatLocation? location,
   }) {
     return BaseItemChat(
       message: data ?? this.message,

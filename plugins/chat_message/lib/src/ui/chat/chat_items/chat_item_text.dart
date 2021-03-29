@@ -42,38 +42,38 @@ extension KMatchString on String {
 
 class KChatItemText extends StatefulWidget {
   /// the [text]
-  final String text;
+  final String? text;
 
   /// the [maxSize] is max percent of width
   final double maxSize;
 
   /// the [style] use for all text non-match
-  final TextStyle style;
+  final TextStyle? style;
 
   /// the [matchText]
   final String matchText;
 
   /// the [margin] is empty space to surround the [decoration] and [child].
-  final EdgeInsets margin;
+  final EdgeInsets? margin;
 
   ///the [padding] is empty space to inscribe inside the [decoration]
-  final EdgeInsets padding;
+  final EdgeInsets? padding;
 
   /// the [backgroundColor] to paint behind the area in [KChatItemText]
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// the [shadows] to paint shadow outside the [KChatItemText]
-  final List<BoxShadow> shadows;
+  final List<BoxShadow>? shadows;
 
   /// the corners of this box are rounded by this [BorderRadius].
-  final BorderRadius borderRadius;
+  final BorderRadius? borderRadius;
 
   /// the [backgroundColorMatchText] is background color when a text matches
-  final Color backgroundColorMatchText;
+  final Color? backgroundColorMatchText;
 
   const KChatItemText(
     this.text, {
-    Key key,
+    Key? key,
     this.style,
     this.margin,
     this.shadows,
@@ -90,18 +90,18 @@ class KChatItemText extends StatefulWidget {
 }
 
 class _KChatItemTextState extends BaseState<KChatItemText> {
-  List<String> _textMatch = List();
+  List<String> _textMatch = [];
   @override
   void initState() {
     super.initState();
-    _textMatch = widget.text.matchString(widget.matchText);
+    _textMatch = widget.text!.matchString(widget.matchText);
   }
 
   @override
   void didUpdateWidget(covariant KChatItemText oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.matchText != oldWidget.matchText) {
-      setState(() => _textMatch = widget.text.matchString(widget.matchText));
+      setState(() => _textMatch = widget.text!.matchString(widget.matchText));
     }
   }
 
@@ -137,7 +137,7 @@ class _KChatItemTextState extends BaseState<KChatItemText> {
 
     return TextSpan(
       text: text,
-      style: widget.style.copyWith(
+      style: widget.style!.copyWith(
         backgroundColor: widget.backgroundColorMatchText,
       ),
     );

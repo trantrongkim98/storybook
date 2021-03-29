@@ -7,32 +7,32 @@ class Button extends StatelessWidget {
   /// For other cases, such as gradients or images, use the [decoration]
   /// property.
   ///
-  final Color color;
+  final Color? color;
 
   /// the disable press [Button]
   final bool disable;
 
   /// the [width] of Button
-  final double width;
+  final double? width;
 
   /// The [child] contained by the Button.
-  final Widget child;
+  final Widget? child;
 
   /// the [height] of Button
-  final double height;
+  final double? height;
 
   /// the color to paint line of border
   final Color borderColor;
 
   /// Empty space to surround the [decoration] and [child].
-  final EdgeInsets margin;
+  final EdgeInsets? margin;
 
   /// Empty space to inscribe inside the [Button]. The [child], if any, is
   /// placed inside this padding.
   ///
   /// This padding is in addition to any padding inherent in the [decoration];
   /// see [Decoration.padding].
-  final EdgeInsets padding;
+  final EdgeInsets? padding;
 
   /// Align the [child] within the container.
   ///
@@ -48,10 +48,10 @@ class Button extends StatelessWidget {
   ///    specify an [AlignmentGeometry].
   ///  * [AlignmentDirectional], like [Alignment] for specifying alignments
   ///    relative to text direction.
-  final Alignment alignment;
+  final Alignment? alignment;
 
   /// Called when the button is tapped or otherwise activated.
-  final Function onCallback;
+  final Function()? onCallback;
 
   /// A list of shadows cast by this box behind the box.
   ///
@@ -62,7 +62,7 @@ class Button extends StatelessWidget {
   ///  * [kElevationToShadow], for some predefined shadows used in Material
   ///    Design.
   ///  * [PhysicalModel], a widget for showing shadows.
-  final List<BoxShadow> boxShadow;
+  final List<BoxShadow>? boxShadow;
 
   /// The border radius of the rounded corners.
   ///
@@ -70,10 +70,10 @@ class Button extends StatelessWidget {
   /// exceed width/height.
   ///
   /// This value is ignored if [clipper] is non-null.
-  final BorderRadius borderRadius;
+  final BorderRadius? borderRadius;
 
   const Button({
-    Key key,
+    Key? key,
     this.color,
     this.width,
     this.child,

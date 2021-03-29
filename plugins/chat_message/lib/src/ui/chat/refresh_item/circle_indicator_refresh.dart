@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 class KCirleIndicatorRefresh extends StatelessWidget {
   final Color color;
-  final EdgeInsets margin;
+  final EdgeInsets? margin;
   final double strokeWidth;
-  final EdgeInsets padding;
+  final EdgeInsets? padding;
   const KCirleIndicatorRefresh({
-    Key key,
+    Key? key,
     this.margin,
     this.padding,
     this.strokeWidth = 4,
-    @required this.color,
+    this.color = Colors.transparent,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {

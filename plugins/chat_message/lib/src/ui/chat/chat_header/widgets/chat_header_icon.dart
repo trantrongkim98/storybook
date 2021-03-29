@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class KChatHeaderIcon extends StatelessWidget {
-  final String icon;
-  final double width;
-  final double height;
-  final Function onTap;
-  final EdgeInsets margin;
-  final EdgeInsets padding;
-  final Color backgroundColor;
+  final String? icon;
+  final double? width;
+  final double? height;
+  final Function()? onTap;
+  final EdgeInsets? margin;
+  final EdgeInsets? padding;
+  final Color? backgroundColor;
   const KChatHeaderIcon({
-    Key key,
+    Key? key,
     this.icon,
     this.width,
     this.onTap,
@@ -30,7 +30,7 @@ class KChatHeaderIcon extends StatelessWidget {
         margin: margin,
         padding: padding,
         child: Image(
-          image: AssetImage(icon),
+          image: AssetImage(icon!),
         ),
       ),
     );

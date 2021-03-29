@@ -5,21 +5,21 @@ import 'package:flutter/material.dart';
 class TextInput extends StatefulWidget {
   final int minLines;
   final int maxLines;
-  final double width;
-  final TextStyle style;
-  final String hintText;
-  final String iconLeft;
-  final String iconEmoji;
-  final String iconRight;
-  final EdgeInsets margin;
-  final EdgeInsets padding;
+  final double? width;
+  final TextStyle? style;
+  final String? hintText;
+  final String? iconLeft;
+  final String? iconEmoji;
+  final String? iconRight;
+  final EdgeInsets? margin;
+  final EdgeInsets? padding;
   final double cursorWidth;
-  final TextStyle hintStyle;
-  final FocusNode focusNode;
-  final String iconCirclePlus;
-  final Function(String) onTextChanged;
+  final TextStyle? hintStyle;
+  final FocusNode? focusNode;
+  final String? iconCirclePlus;
+  final Function(String)? onTextChanged;
   const TextInput({
-    Key key,
+    Key? key,
     this.style,
     this.width,
     this.margin,
@@ -69,7 +69,7 @@ class TextInputState extends State<TextInput> {
   }
 
   Widget _buildIconEmoji() {
-    if (widget.iconEmoji == null || widget.iconEmoji.isEmpty) {
+    if (widget.iconEmoji == null || widget.iconEmoji!.isEmpty) {
       return ZeroWidget();
     }
 
@@ -77,7 +77,7 @@ class TextInputState extends State<TextInput> {
       padding: EdgeInsets.only(left: 5, bottom: 12),
       child: Image(
         image: AssetImage(
-          widget.iconEmoji,
+          widget.iconEmoji!,
         ),
       ),
     );
@@ -106,7 +106,7 @@ class TextInputState extends State<TextInput> {
   }
 
   Widget _buildIconCirclePlus() {
-    if (widget.iconCirclePlus == null || widget.iconCirclePlus.isEmpty) {
+    if (widget.iconCirclePlus == null || widget.iconCirclePlus!.isEmpty) {
       return ZeroWidget();
     }
 
@@ -114,7 +114,7 @@ class TextInputState extends State<TextInput> {
       padding: EdgeInsets.only(right: 5, bottom: 12),
       child: Image(
         image: AssetImage(
-          widget.iconCirclePlus,
+          widget.iconCirclePlus!,
         ),
       ),
     );
@@ -122,7 +122,7 @@ class TextInputState extends State<TextInput> {
 
   resetTextField() {
     _controller.clear();
-    widget.onTextChanged("");
+    widget.onTextChanged!("");
   }
 
   String get text => _controller.text;
